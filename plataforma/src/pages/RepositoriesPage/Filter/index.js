@@ -1,15 +1,12 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Container, Selector, Cleaner } from './styles'
+import { Container, Selector, Cleaner } from './styles';
 
-const Filter = () =>    {
-  const langs = [
-    {name: 'Javascript', count: 5, color: '#f1c40f'},
-    {name: 'Shell', count: 2, color: '#95a5a6'},
-    {name: 'PHP', count: 1, color: '#3498db'},
-  ];
+const Filter = ({ languages }) => {
+
 /* langs possui os objetos vai executar a função map, cada elemento do langs será colocado dentro da variável lang lang foi substituido por {name, count, color} */
-  const selectors = langs.map(({name, count, color}) => (
+  const selectors = languages.map(({name, count, color}) => (
     <Selector
       key={name.toLowerCase()}
       color={color}
@@ -27,5 +24,15 @@ return (
 </Container>
 
 )}
+
+Filter.propTypes = {
+  languages: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      count: PropTypes.number.isRequired,
+      color: PropTypes.string,
+    }).isRequired,
+  ).isRequired,
+}
 
 export default Filter
