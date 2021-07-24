@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Container, Name, Description, Footer, Lang, Link } from './styles'
 
-const Repository = ({repository}) => (
+const Repository = ({ repository }) => (
 
     <Container color="#f37272">
       <Name>{repository.name}</Name>
@@ -16,15 +16,15 @@ const Repository = ({repository}) => (
   )
 
 Repository.propTypes = {
-  repository: PropTypes.arrayOf(
-    PropTypes.shape({
+
+    repository: PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       html_url: PropTypes.string.isRequired,
       language: PropTypes.string,
     }).isRequired
-  ).isRequired,
+
 }
 export default Repository
 
