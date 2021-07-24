@@ -1,24 +1,20 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import Repository from './Repository'
 
 import { Container } from './styles'
 
-const Repositories = ({Repositories}) => {
+const Repositories = ({repositories}) => {
 const repos = repositories.map((repository) => (
   <Repository key={repository.id} repository={repository} />
 ));
 
-  return
-
-  <Container>
-
-    {repos}
-  </Container>
+  return<Container>{repos}</Container>;
 };
 
 Repositories.propTypes = {
+
   repositories: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -28,7 +24,7 @@ Repositories.propTypes = {
       language: PropTypes.string,
     }).isRequired
   ).isRequired,
-}
+};
 
 export default Repositories
 
