@@ -5,26 +5,40 @@ import Repository from './Repository'
 
 import { Container } from './styles'
 
-const Repositories = ({repositories}) => {
-const repos = repositories.map((repository) => (
+const Repositories = ({ repositories, currentLanguage }) => {
+const repos = repositories
+.filter((repository) => currentLanguage === undefined || repository.language === currentLanguage)
+.map((repository) => (
   <Repository key={repository.id} repository={repository} />
 ));
 
-  return <Container>{repos}</Container>;
+  return <Container>
+    {repos}
+  </Container>;
 };
+
+Repositories.defaultProps = {
+  currentLanguage: undefined,
+}
 
 Repositories.propTypes = {
 
   repositories: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       html_url: PropTypes.string.isRequired,
       language: PropTypes.string,
     }).isRequired
-  ).isRequired,
+    ).isRequired,
+
+currentLanguage: PropTypes.string,
+
+
+
+
 };
 
-export default Repositories
+export default Repositories;
 

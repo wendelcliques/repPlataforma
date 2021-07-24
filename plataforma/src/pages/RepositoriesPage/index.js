@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import Profile from './Profile/index'
 import Filter from './Filter'
@@ -7,6 +7,7 @@ import { Container, Sidebar, Main } from './styles'
 import { getLangsFrom } from '../../services/api'
 
 const RepositoriesPage = () => {
+  const [currentLanguage, setCurrentLanguage] = useState();
 const user = {
   login: "devsamurai",
   name: "Wendel Sousa",
@@ -18,44 +19,45 @@ const user = {
   location: "São Paulo - SP",
 }
 
+
  const repositories = [
   {
-    id: 1,
+    id: '1',
     name: 'Repo 1',
     description: 'Descrição',
     html_url: "https://devsamurai.com.br",
     language: 'Ruby',
   },
   {
-    id: 2,
+    id: '2',
     name: 'Repo 2',
     description: 'Descrição',
     html_url: "https://devsamurai.com.br",
     language: 'TypeScript',
   },
   {
-    id: 3,
+    id: '3',
     name: 'Repo 3',
     description: 'Descrição',
     html_url: "https://devsamurai.com.br",
     language: 'PHP',
   },
   {
-    id: 4,
+    id: '4',
     name: 'Repo 4',
     description: 'Descrição',
     html_url: "https://devsamurai.com.br",
-    language: 'Ruby',
+    language: null,
   },
   {
-    id: 5,
+    id: '5',
     name: 'Repo 5',
     description: 'Descrição',
     html_url: "https://devsamurai.com.br",
     language: 'Java',
   },
   {
-    id: 6,
+    id: '6',
     name: 'Repo 6',
     description: 'Descrição',
     html_url: "https://devsamurai.com.br",
@@ -66,16 +68,27 @@ const user = {
 
 const languages = getLangsFrom(repositories);
 
-
+const onFilterClick = (language) => {
+  setCurrentLanguage(language);
+};
 
 return (
   <Container>
     <Sidebar>
       <Profile user={user} />
-      <Filter languages={languages} />
+      <Filter
+      languages={languages}
+      currentLanguage={currentLanguage}
+      onClick={
+        onFilterClick
+      }
+      />
     </Sidebar>
     <Main>
-      <Repositories repositories={repositories} />
+      <Repositories
+      repositories={repositories}
+      currentLanguage={currentLanguage}
+      />
     </Main>
   </Container>
 )}
@@ -83,3 +96,4 @@ return (
 export default RepositoriesPage
 
 
+// eslint-disable-next-line no-unused-vars
