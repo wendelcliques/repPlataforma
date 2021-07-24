@@ -1,8 +1,10 @@
 import firebase from 'firebase';
 import 'firebase/database';
 import 'firebase/auth';
+
 import 'firebase/firestore';
-var firebaseConfig = {
+
+const firebaseConfig = {
   apiKey: "AIzaSyD3He0KjYvXwsTtv0I07JIM9sQnFbq7hP4",
   authDomain: "atividadesceu.firebaseapp.com",
   projectId: "atividadesceu",

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from "react"
 
 import Profile from './Profile/index'
 import Filter from './Filter'
@@ -6,8 +6,27 @@ import Repositories from './Repositories'
 import { Container, Sidebar, Main } from './styles'
 import { getLangsFrom } from '../../services/api'
 
+import fireDb from '../../services/firebase'
+
 const RepositoriesPage = () => {
+
+const [repositories, setRepositories] = useState([]);
+
   const [currentLanguage, setCurrentLanguage] = useState();
+
+
+useEffect(() => {
+  const loadRepositories = async () => {
+    const db = fireDb.firestore();
+      const data = await db.collection('repositories').get();
+      setRepositories(data.docs.map(doc => ({ ...doc.data(), id: doc.id})));
+  }
+  loadRepositories();
+}, [])
+
+console.log("repositories", repositories)
+
+
 const user = {
   login: "devsamurai",
   name: "Wendel Sousa",
@@ -20,7 +39,7 @@ const user = {
 }
 
 
- const repositories = [
+ /* const repositories = [
   {
     id: '1',
     name: 'Repo 1',
@@ -64,7 +83,7 @@ const user = {
     language: 'TypeScript',
   },
 ];
-
+*/
 
 const languages = getLangsFrom(repositories);
 
