@@ -5,6 +5,8 @@ import { Container, Selector, Cleaner } from './styles';
 
 const Filter = ({ languages, currentLanguage, onClick }) => {
 
+  
+
 /* langs possui os objetos vai executar a função map, cada elemento do langs será colocado dentro da variável lang lang foi substituido por {name, count, color} */
   const selectors = languages.map(({name, count, color}) => (
     <Selector
@@ -27,6 +29,11 @@ return (
     onClick={() => onClick && onClick(undefined)}
   >
     Limpar
+  </Cleaner>
+  <Cleaner
+    onClick={() => onClick && onClick(undefined)}
+  >
+    Adicionar
   </Cleaner>
 </Container>
 

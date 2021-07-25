@@ -7,6 +7,7 @@ export const Container = styled.div`
   background: rgba(0, 0, 0, 0.25);
   border-left: 3px solid ${(props) => props.color || props.theme.colors.champagneDark};
   padding: 1rem;
+  //min-height: 100vh;
 `;
 
 export const Name = styled.h3`

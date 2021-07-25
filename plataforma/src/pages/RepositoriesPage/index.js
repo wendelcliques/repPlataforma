@@ -7,6 +7,7 @@ import { Container, Sidebar, Main } from './styles'
 import { getLangsFrom } from '../../services/api'
 
 import fireDb from '../../services/firebase'
+import RepositoriesAdd from "./RepositoriesAdd"
 
 const RepositoriesPage = () => {
 
@@ -108,6 +109,7 @@ return (
       repositories={repositories}
       currentLanguage={currentLanguage}
       />
+      <RepositoriesAdd />
     </Main>
   </Container>
 )}
