@@ -15,6 +15,17 @@ const [repositories, setRepositories] = useState([]);
 
   const [currentLanguage, setCurrentLanguage] = useState();
 
+  const [repo, setRepo] = useState(true);
+  const [repoAdd, setRepoAdd] = useState(false);
+
+  const onRepoAddClick = () => {
+    setRepo(false);
+    setRepoAdd(true);
+  }
+
+  console.log("repo:: ligar tela", repo);
+  console.log("repoadd:: ligar tela", repoAdd)
+
 
 useEffect(() => {
   const loadRepositories = async () => {
@@ -102,14 +113,22 @@ return (
       onClick={
         onFilterClick
       }
+
+      onRepoAddClick={onRepoAddClick}
       />
     </Sidebar>
     <Main>
+      {repo && (
       <Repositories
       repositories={repositories}
       currentLanguage={currentLanguage}
       />
-      <RepositoriesAdd />
+      )}
+
+{repoAdd && (
+      <RepositoriesAdd  />
+)}
+
     </Main>
   </Container>
 )}
