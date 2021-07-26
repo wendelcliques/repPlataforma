@@ -18,10 +18,16 @@ const [repositories, setRepositories] = useState([]);
   const [repo, setRepo] = useState(true);
   const [repoAdd, setRepoAdd] = useState(false);
 
-  const onRepoAddClick = () => {
+  const onFilterAddClick = () => {
     setRepo(false);
     setRepoAdd(true);
   }
+
+  const onCancelClick = () => {
+    setRepo(true);
+    setRepoAdd(false);
+  }
+
 
   console.log("repo:: ligar tela", repo);
   console.log("repoadd:: ligar tela", repoAdd)
@@ -103,6 +109,8 @@ const onFilterClick = (language) => {
   setCurrentLanguage(language);
 };
 
+
+
 return (
   <Container>
     <Sidebar>
@@ -114,7 +122,7 @@ return (
         onFilterClick
       }
 
-      onRepoAddClick={onRepoAddClick}
+      onFilterAddClick={onFilterAddClick}
       />
     </Sidebar>
     <Main>
@@ -126,7 +134,10 @@ return (
       )}
 
 {repoAdd && (
-      <RepositoriesAdd  />
+      <RepositoriesAdd
+      onCancelClick={onCancelClick}
+
+      />
 )}
 
     </Main>

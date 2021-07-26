@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-// import PropTypes from 'prop-types';
+  import PropTypes from 'prop-types';
 
 // import { MdSearch } from 'react-icons/md'
 
@@ -8,12 +8,15 @@ import { Container, Title, Form, Input, Button  } from './styles';
 
 import { addRepository } from '../../../services/Repositories';
 
-const RepositoriesAdd = () => {
+const RepositoriesAdd = (
+   {onCancelClick}
+) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [language, setLanguage] = useState('');
   const [url, setUrl] = useState('');
 
+let chave = false;
 // eslint-disable-next-line no-unused-vars
 
 
@@ -29,7 +32,16 @@ const RepositoriesAdd = () => {
     console.log("repositories add:: onsave", data)
 
     addRepository(data);
+
+
+
   }
+
+  const onCancel = () => {
+    onSave()
+
+
+
   return (
 
 
@@ -55,7 +67,8 @@ const RepositoriesAdd = () => {
           onChange={event => setUrl(event.target.value) } />
           <Button
             onClick={
-              onSave
+              onCancel
+
             }
           >
             Adicionar
@@ -65,5 +78,18 @@ const RepositoriesAdd = () => {
   );
 };
 
+RepositoriesAdd.defaultProps = {
+onCancelClick: null,
+
+}
+
+RepositoriesAdd.propTypes = {
+
+
+onCancelClick: PropTypes.func,
+
+
+
+}
 
 export default RepositoriesAdd;

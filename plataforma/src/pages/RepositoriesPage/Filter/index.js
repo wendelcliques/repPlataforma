@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Container, Selector, Cleaner, Footer } from './styles';
 
-const Filter = ({ languages, currentLanguage, onClick, onRepoAddClick }) => {
+const Filter = ({ languages, currentLanguage, onClick, onFilterAddClick }) => {
 
 
 
@@ -32,7 +32,7 @@ return (
 
 
   <Cleaner
-    onClick={() => onRepoAddClick && onRepoAddClick}
+    onClick={onFilterAddClick}
   >
     Adicionar
   </Cleaner>
@@ -44,7 +44,7 @@ return (
 Filter.defaultProps = {
   currentLanguage: null,
   onClick: null,
-  onRepoAddClick: null,
+  onFilterAddClick: null,
 }
 
 Filter.propTypes = {
@@ -57,7 +57,7 @@ Filter.propTypes = {
   ).isRequired,
   currentLanguage: PropTypes.string,
   onClick: PropTypes.func,
-  onRepoAddClick: PropTypes.func,
+  onFilterAddClick: PropTypes.func,
 }
 
 export default Filter
