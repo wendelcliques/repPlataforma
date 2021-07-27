@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import { Container, Name, Description, Footer, Lang, Link } from './styles'
 
 import { langColors } from '../../../../services/config';
+import RepositoriesAdd from '../../RepositoriesAdd';
 
 const Repository = ({ repository }) => {
   const color = langColors[repository.language && repository.language.toLowerCase()];
+  const up = true;
   return (
 
     <Container color={color}>
@@ -16,6 +18,9 @@ const Repository = ({ repository }) => {
         <Lang>{repository.language}</Lang>
         <Link href={repository.html_url} target="_blank">Ver</Link>
       </Footer>
+{ up && (
+      <RepositoriesAdd />
+      )}
     </Container>
   )};
 

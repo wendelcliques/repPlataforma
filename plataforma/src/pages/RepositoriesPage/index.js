@@ -9,7 +9,14 @@ import { getLangsFrom } from '../../services/api'
 import fireDb from '../../services/firebase'
 import RepositoriesAdd from "./RepositoriesAdd"
 
+import { addRepository } from "../../services/Repositories"
+
 const RepositoriesPage = () => {
+
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [lang, setLang] = useState('');
+  const [url, setUrl] = useState('');
 
 const [repositories, setRepositories] = useState([]);
 
@@ -18,15 +25,35 @@ const [repositories, setRepositories] = useState([]);
   const [repo, setRepo] = useState(true);
   const [repoAdd, setRepoAdd] = useState(false);
 
+  const onCancelClick = () => {
+   setRepo(true);
+   setRepoAdd(false);
+   document.location.reload();
+  }
+
+  const onSave = () => {
+    const data = {
+      id: null,
+       name,
+       description,
+       lang,
+       url,
+    };
+
+    console.log("repositories :: onsave", data)
+
+    addRepository(data);
+
+     onCancelClick();
+
+  }
+
   const onFilterAddClick = () => {
     setRepo(false);
     setRepoAdd(true);
   }
 
-  const onCancelClick = () => {
-    setRepo(true);
-    setRepoAdd(false);
-  }
+
 
 
   console.log("repo:: ligar tela", repo);
@@ -57,7 +84,64 @@ const user = {
 }
 
 
- /* const repositories = [
+
+const languages = getLangsFrom(repositories);
+
+const onFilterClick = (language) => {
+  setCurrentLanguage(language);
+};
+
+
+
+return (
+  <Container>
+    <Sidebar>
+      <Profile user={user} />
+      <Filter
+      languages={languages}
+      currentLanguage={currentLanguage}
+      onClick={
+        onFilterClick
+      }
+
+      onFilterAddClick={onFilterAddClick}
+      />
+    </Sidebar>
+    <Main>
+      {repo && (
+      <Repositories
+      repositories={repositories}
+      currentLanguage={currentLanguage}
+      />
+      )}
+
+{repoAdd && (
+      <RepositoriesAdd
+      onSave={onSave}
+
+      name={name}
+      description={description}
+      lang={lang}
+      url={url}
+
+      setName={setName}
+      setDescription={setDescription}
+      setLang={setLang}
+      setUrl={setUrl}
+
+      />
+)}
+
+    </Main>
+  </Container>
+)}
+
+export default RepositoriesPage
+
+
+// eslint-disable-next-line no-unused-vars
+
+/* const repositories = [
   {
     id: '1',
     name: 'Repo 1',
@@ -102,49 +186,3 @@ const user = {
   },
 ];
 */
-
-const languages = getLangsFrom(repositories);
-
-const onFilterClick = (language) => {
-  setCurrentLanguage(language);
-};
-
-
-
-return (
-  <Container>
-    <Sidebar>
-      <Profile user={user} />
-      <Filter
-      languages={languages}
-      currentLanguage={currentLanguage}
-      onClick={
-        onFilterClick
-      }
-
-      onFilterAddClick={onFilterAddClick}
-      />
-    </Sidebar>
-    <Main>
-      {repo && (
-      <Repositories
-      repositories={repositories}
-      currentLanguage={currentLanguage}
-      />
-      )}
-
-{repoAdd && (
-      <RepositoriesAdd
-      onCancelClick={onCancelClick}
-
-      />
-)}
-
-    </Main>
-  </Container>
-)}
-
-export default RepositoriesPage
-
-
-// eslint-disable-next-line no-unused-vars

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
   import PropTypes from 'prop-types';
 
@@ -6,43 +6,15 @@ import React, {useState} from 'react';
 
 import { Container, Title, Form, Input, Button  } from './styles';
 
-import { addRepository } from '../../../services/Repositories';
-
-const RepositoriesAdd = (
-   {onCancelClick}
-) => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [language, setLanguage] = useState('');
-  const [url, setUrl] = useState('');
-
-let chave = false;
-// eslint-disable-next-line no-unused-vars
 
 
-  const onSave = () => {
-    const data = {
-      id: null,
-       name,
-       description,
-       language,
-       url,
-    };
-
-    console.log("repositories add:: onsave", data)
-
-    addRepository(data);
+const RepositoriesAdd = ({ onSave, name, description, lang, url, setName, setDescription, setLang, setUrl }) => (
 
 
 
-  }
-
-  const onCancel = () => {
-    onSave()
 
 
 
-  return (
 
 
     <Container>
@@ -59,15 +31,15 @@ let chave = false;
           onChange={event => setDescription(event.target.value) } />
           <Input
           placeholder="Linguagem"
-          value={language}
-          onChange={event => setLanguage(event.target.value) } />
+          value={lang}
+          onChange={event => setLang(event.target.value) } />
           <Input
           placeholder="Site"
           value={url}
           onChange={event => setUrl(event.target.value) } />
           <Button
             onClick={
-              onCancel
+              onSave
 
             }
           >
@@ -76,20 +48,41 @@ let chave = false;
         </Form>
     </Container>
   );
-};
+
 
 RepositoriesAdd.defaultProps = {
-onCancelClick: null,
+ onSave: null,
+ name: null,
+ description: null,
+ lang: null,
+ url: null,
+
+ setName: null,
+ setDescription: null,
+ setLang: null,
+ setUrl: null,
 
 }
 
 RepositoriesAdd.propTypes = {
 
 
-onCancelClick: PropTypes.func,
+ onSave: PropTypes.func,
+ name: PropTypes.func,
+ description: PropTypes.func,
+ lang: PropTypes.func,
+ url: PropTypes.func,
+
+ setName: PropTypes.func,
+ setDescription: PropTypes.func,
+ setLang: PropTypes.func,
+ setUrl: PropTypes.func,
 
 
 
 }
 
 export default RepositoriesAdd;
+
+
+// eslint-disable-next-line no-unused-vars

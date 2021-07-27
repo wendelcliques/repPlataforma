@@ -9,7 +9,7 @@ export const addRepository = async repo => {
     data = {
       name: repo.name,
       description: repo.description,
-      language: repo.language,
+      language: repo.lang,
       html_url: repo.url,
 
     };
