@@ -22,7 +22,10 @@ module.exports = {
   plugins: ['react', 'react-hooks', 'testing-library', 'prettier'],
   rules: {
     'prettier/prettier': 'warn',
-    'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js'] }],
+    'react/jsx-filename-extension': ['warn', { extensions: [
+       '.jsx',
+      '.js'
+    ] }],
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': [
       'error',

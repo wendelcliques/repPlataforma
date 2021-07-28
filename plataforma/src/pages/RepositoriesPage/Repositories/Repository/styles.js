@@ -40,5 +40,20 @@ export const Link = styled.a`
   text-decoration: none;
 `;
 
+export const Cleaner = styled.button`
+  background: transparent;
+   color:  ${(props) => props.theme.colors.text};
+  border: none;
+  text-align: left;
+  padding: 1rem;
+  &:hover {
+    color: rgba(255, 255, 255, 0.5)
+  }
 
+
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.md} ) {
+    text-align: center;
+    padding: 0 1rem;
+  }
+`;
 

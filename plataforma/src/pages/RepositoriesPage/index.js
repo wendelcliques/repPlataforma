@@ -104,9 +104,7 @@ return (
       <Filter
       languages={languages}
       currentLanguage={currentLanguage}
-      onClick={
-        onFilterClick
-      }
+      onClick={onFilterClick }
 
       onFilterAddClick={onFilterAddClick}
       />
@@ -117,7 +115,9 @@ return (
       repositories={repositories}
       currentLanguage={currentLanguage}
 
+      setName={setName}
 
+      onFilterAddClick={onFilterAddClick}
       />
       )}
 
