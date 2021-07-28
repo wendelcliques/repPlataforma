@@ -13,7 +13,11 @@ import { addRepository } from "../../services/Repositories"
 
 const RepositoriesPage = () => {
 
-  const [name, setName] = useState('');
+  const repos = {
+    name: null,
+  }
+
+  const [name, setName] = useState(repos.name);
   const [description, setDescription] = useState('');
   const [lang, setLang] = useState('');
   const [url, setUrl] = useState('');
@@ -112,6 +116,8 @@ return (
       <Repositories
       repositories={repositories}
       currentLanguage={currentLanguage}
+
+
       />
       )}
 
