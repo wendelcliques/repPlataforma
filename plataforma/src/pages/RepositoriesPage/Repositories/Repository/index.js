@@ -6,13 +6,18 @@ import { Container, Name, Description, Footer, Lang, Link, Cleaner } from './sty
 import { langColors } from '../../../../services/config';
 
 
-const Repository = ({ repository, setName }) => {
+const Repository = ({ repository, setName, indice }) => {
   const color = langColors[repository.language && repository.language.toLowerCase()];
+
+  const onClick = ( ) => {
+    setName(indice);
+  }
 
   return (
 
     <Container color={color}>
       <Name>{repository.name}</Name>
+      <Name>{indice}</Name>
       <Description>{repository.description}</Description>
       <Footer color={color}>
         <Lang>{repository.language}</Lang>
@@ -22,7 +27,7 @@ const Repository = ({ repository, setName }) => {
     onClick={
 
 
-      setName(repository.name)}
+      onClick()}
   >
     Atualizar
   </Cleaner>
@@ -32,6 +37,7 @@ const Repository = ({ repository, setName }) => {
   )};
 
 Repository.propTypes = {
+
     repository: PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
@@ -39,10 +45,13 @@ Repository.propTypes = {
       html_url: PropTypes.string.isRequired,
       language: PropTypes.string,
 
-      onFilterAddClick: PropTypes.node,
-      setName: PropTypes.string,
+
+
 
     }).isRequired,
+    // onFilterAddClick: PropTypes.func.isRequired,
+    setName: PropTypes.func.isRequired,
+    indice: PropTypes.string.isRequired,
 };
 
 export default Repository

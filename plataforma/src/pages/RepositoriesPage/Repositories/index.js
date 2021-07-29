@@ -5,27 +5,34 @@ import Repository from './Repository'
 
 import { Container } from './styles'
 
+
 const Repositories = ({ repositories, currentLanguage, onFilterAddClick, setName }) => {
+
 const repos = repositories
 .filter((repository) => currentLanguage === undefined || repository.language === currentLanguage)
-.map((repository) => (
+.map((repository, indice) => (
+
   <Repository
-  key={repository.id}
+  indice={indice}
   repository={repository}
 
   onFilterAddClick={onFilterAddClick}
   setName={setName}
   />
+
 ));
 
-  return <Container>
+// console.log("key", repository.id);
+
+  return  <Container>
     {repos}
   </Container>;
+
 };
 
-Repositories.defaultProps = {
+ Repositories.defaultProps = {
   currentLanguage: undefined,
-  
+
 }
 
 Repositories.propTypes = {
@@ -34,8 +41,8 @@ Repositories.propTypes = {
 
   repositories: PropTypes.arrayOf(
     PropTypes.shape({
-      onFilterAddClick: PropTypes.number,
-      setName: PropTypes.func,
+
+
 
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
@@ -45,12 +52,23 @@ Repositories.propTypes = {
     }).isRequired
     ).isRequired,
 
+    onFilterAddClick: PropTypes.func.isRequired,
+    setName: PropTypes.func.isRequired,
+
 currentLanguage: PropTypes.string,
 
 
 
 
 };
+
+
+
+
+
+
+
+
 
 export default Repositories;
 

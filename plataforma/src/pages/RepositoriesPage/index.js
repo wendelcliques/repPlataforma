@@ -27,7 +27,7 @@ const [repositories, setRepositories] = useState([]);
   const [currentLanguage, setCurrentLanguage] = useState();
 
   const [repo, setRepo] = useState(true);
-  const [repoAdd, setRepoAdd] = useState(false);
+  const [repoAdd, setRepoAdd] = useState(true);
 
   const onCancelClick = () => {
    setRepo(true);
@@ -62,6 +62,7 @@ const [repositories, setRepositories] = useState([]);
 
   console.log("repo:: ligar tela", repo);
   console.log("repoadd:: ligar tela", repoAdd)
+  console.log("name:: repo page", name)
 
 
 useEffect(() => {
@@ -101,6 +102,7 @@ return (
   <Container>
     <Sidebar>
       <Profile user={user} />
+      
       <Filter
       languages={languages}
       currentLanguage={currentLanguage}
