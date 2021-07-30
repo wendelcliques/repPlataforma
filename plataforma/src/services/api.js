@@ -14,9 +14,12 @@ export const getLangsFrom = (repositories) => {
     (data, language) => ({
     ...data,
     [language]: (data[language] || 0) + 1,
+
   }),
+
    []
    );
+
 
    delete stats.null;
 
@@ -30,5 +33,7 @@ export const getLangsFrom = (repositories) => {
 
   console.log("stats", stats)
 
+  console.log("api :: repositories", repositories)
+  
   return stats;
 }
