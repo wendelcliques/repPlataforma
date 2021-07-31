@@ -5,7 +5,7 @@ import Repository from './Repository'
 
 import { Container } from './styles'
 
-import FlatList from 'flatlist-react';
+
 
 
 const Repositories = ({ repositories, currentLanguage, onFilterAddClick, setName }) => {
@@ -31,12 +31,7 @@ const repos = repositories
   return  <Container>
     {repos}
 
-    <ul>
-   <FlatList
 
-list={repos}
-   />
-   </ul>
   </Container>;
 
 

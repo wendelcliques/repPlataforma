@@ -5,10 +5,13 @@ import { Container, Selector, Cleaner, Footer } from './styles';
 
 const Filter = ({ languages, currentLanguage, onClick, onFilterAddClick }) => {
 
-
+  console.log("languages::filter", languages)
 
 /* langs possui os objetos vai executar a função map, cada elemento do langs será colocado dentro da variável lang lang foi substituido por {name, count, color} */
+
+
   const selectors = languages.map(({name, count, color}) => (
+
     <Selector
 
       key={name.toLowerCase()}
@@ -20,6 +23,7 @@ const Filter = ({ languages, currentLanguage, onClick, onFilterAddClick }) => {
       <span>{count}</span>
     </Selector>
   ));
+
 return (
 <Container>
   {selectors}
