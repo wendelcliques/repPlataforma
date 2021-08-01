@@ -3,31 +3,38 @@ import React, {useState, useEffect} from "react"
 import Profile from './Profile/index'
 import Filter from './Filter'
 import Repositories from './Repositories'
+import RepositoriesAdd from "./RepositoriesAdd"
 import { Container, Sidebar, Main } from './styles'
 import { getLangsFrom } from '../../services/api'
 
 import fireDb from '../../services/firebase'
-import RepositoriesAdd from "./RepositoriesAdd"
+
 
 import { addRepository } from "../../services/Repositories"
 
 const RepositoriesPage = () => {
 
   const repos = {
+    id: null,
     name: null,
+    description: null,
+    lang: null,
+    url: null,
   }
 
+  const [id] = useState(repos.id);
+
   const [name, setName] = useState(repos.name);
-  const [description, setDescription] = useState('');
-  const [lang, setLang] = useState('');
-  const [url, setUrl] = useState('');
+  const [description, setDescription] = useState(repos.description);
+  const [lang, setLang] = useState(repos.lang);
+  const [url, setUrl] = useState(repos.url);
 
 const [repositories, setRepositories] = useState([]);
 
   const [currentLanguage, setCurrentLanguage] = useState();
 
   const [repo, setRepo] = useState(true);
-  const [repoAdd, setRepoAdd] = useState(true);
+  const [repoAdd, setRepoAdd] = useState(false);
 
   const onCancelClick = () => {
    setRepo(true);
@@ -37,7 +44,7 @@ const [repositories, setRepositories] = useState([]);
 
   const onSave = () => {
     const data = {
-      id: null,
+      id,
        name,
        description,
        lang,
@@ -102,7 +109,7 @@ return (
   <Container>
     <Sidebar>
       <Profile user={user} />
-      
+
       <Filter
       languages={languages}
       currentLanguage={currentLanguage}
@@ -118,6 +125,13 @@ return (
       currentLanguage={currentLanguage}
 
       setName={setName}
+      setDescription={setDescription}
+      setLang={setLang}
+      setUrl={setUrl}
+
+      setRepo={setRepo}
+      setRepoAdd={setRepoAdd}
+
 
       onFilterAddClick={onFilterAddClick}
       />

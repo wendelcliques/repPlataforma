@@ -8,7 +8,20 @@ import { Container } from './styles'
 
 
 
-const Repositories = ({ repositories, currentLanguage, onFilterAddClick, setName }) => {
+const Repositories = ({
+  repositories,
+  currentLanguage,
+  onFilterAddClick,
+  setName,
+
+      setDescription,
+      setLang,
+      setUrl,
+
+      setRepo,
+      setRepoAdd,
+
+    }) => {
 
 const repos = repositories
 .filter((repository) => currentLanguage === undefined || repository.language === currentLanguage)
@@ -20,6 +33,13 @@ const repos = repositories
 
   onFilterAddClick={onFilterAddClick}
   setName={setName}
+
+      setDescription={setDescription}
+      setLang={setLang}
+      setUrl={setUrl}
+
+      setRepo={setRepo}
+      setRepoAdd={setRepoAdd}
   />
 
 
@@ -61,6 +81,13 @@ Repositories.propTypes = {
 
     onFilterAddClick: PropTypes.func.isRequired,
     setName: PropTypes.func.isRequired,
+
+      setDescription: PropTypes.func.isRequired,
+      setLang: PropTypes.func.isRequired,
+      setUrl: PropTypes.func.isRequired,
+
+      setRepo: PropTypes.func.isRequired,
+      setRepoAdd: PropTypes.func.isRequired,
 
 currentLanguage: PropTypes.string,
 
