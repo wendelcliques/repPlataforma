@@ -17,7 +17,9 @@ const Repositories = ({
       setDescription,
       setLang,
       setUrl,
+      setId,
 
+      setIsEdit,
       setRepo,
       setRepoAdd,
 
@@ -37,7 +39,9 @@ const repos = repositories
       setDescription={setDescription}
       setLang={setLang}
       setUrl={setUrl}
+      setId={setId}
 
+      setIsEdit={setIsEdit}
       setRepo={setRepo}
       setRepoAdd={setRepoAdd}
   />
@@ -85,7 +89,9 @@ Repositories.propTypes = {
       setDescription: PropTypes.func.isRequired,
       setLang: PropTypes.func.isRequired,
       setUrl: PropTypes.func.isRequired,
+      setId: PropTypes.func.isRequired,
 
+      setIsEdit: PropTypes.func.isRequired,
       setRepo: PropTypes.func.isRequired,
       setRepoAdd: PropTypes.func.isRequired,
 

@@ -12,7 +12,9 @@ const Repository = ({
   setDescription,
   setLang,
   setUrl,
+  setId,
 
+  setIsEdit,
   setRepo,
   setRepoAdd,
 
@@ -24,9 +26,12 @@ const Repository = ({
     setDescription(valor.description);
     setLang(valor.language);
     setUrl(valor.html_url);
+    setId(valor.id);
 
+    setIsEdit(true);
     setRepo(false);
     setRepoAdd(true);
+
 
   }
 
@@ -82,7 +87,9 @@ Repository.propTypes = {
     setDescription: PropTypes.func.isRequired,
     setLang: PropTypes.func.isRequired,
     setUrl: PropTypes.func.isRequired,
+    setId: PropTypes.func.isRequired,
 
+    setIsEdit: PropTypes.func.isRequired,
     setRepo: PropTypes.func.isRequired,
     setRepoAdd: PropTypes.func.isRequired,
 

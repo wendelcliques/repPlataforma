@@ -8,7 +8,23 @@ import { Container, Title, Form, Input, Button  } from './styles';
 
 
 
-const RepositoriesAdd = ({ onSave, name, description, lang, url, setName, setDescription, setLang, setUrl }) => (
+const RepositoriesAdd = ({
+
+  onSave,
+  onUpdate,
+
+  name,
+  description,
+  lang,
+  url,
+  isEdit,
+
+  setName,
+  setDescription,
+  setLang,
+  setUrl,
+
+}) => (
 
 
 
@@ -37,25 +53,36 @@ const RepositoriesAdd = ({ onSave, name, description, lang, url, setName, setDes
           placeholder="Site"
           value={url}
           onChange={event => setUrl(event.target.value) } />
-          <Button
-            onClick={
-              onSave
 
-            }
+<div>
+ { isEdit ?
+<Button
+            onClick={onUpdate }
           >
-            Adicionar
+      Atualizar
+          </Button > :
+          <Button
+            onClick={onSave }
+          >
+           Adicionar
           </Button >
+}
+</div>
+
+
+
         </Form>
     </Container>
   );
 
 
 RepositoriesAdd.defaultProps = {
- onSave: null,
+
  name: null,
  description: null,
  lang: null,
  url: null,
+ isEdit: null,
 
  setName: null,
  setDescription: null,
@@ -67,11 +94,15 @@ RepositoriesAdd.defaultProps = {
 RepositoriesAdd.propTypes = {
 
 
- onSave: PropTypes.func,
+
+onSave: PropTypes.func.isRequired,
+onUpdate: PropTypes.func.isRequired,
+
  name: PropTypes.func,
  description: PropTypes.func,
  lang: PropTypes.func,
  url: PropTypes.func,
+ isEdit: PropTypes.func,
 
  setName: PropTypes.func,
  setDescription: PropTypes.func,

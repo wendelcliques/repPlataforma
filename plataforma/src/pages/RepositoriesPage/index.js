@@ -10,7 +10,7 @@ import { getLangsFrom } from '../../services/api'
 import fireDb from '../../services/firebase'
 
 
-import { addRepository } from "../../services/Repositories"
+import { addRepository, updateRepository } from "../../services/Repositories"
 
 const RepositoriesPage = () => {
 
@@ -22,12 +22,14 @@ const RepositoriesPage = () => {
     url: null,
   }
 
-  const [id] = useState(repos.id);
+  const [id, setId] = useState(repos.id);
 
   const [name, setName] = useState(repos.name);
   const [description, setDescription] = useState(repos.description);
   const [lang, setLang] = useState(repos.lang);
   const [url, setUrl] = useState(repos.url);
+
+  const [isEdit, setIsEdit] = useState(false);
 
 const [repositories, setRepositories] = useState([]);
 
@@ -53,16 +55,44 @@ const [repositories, setRepositories] = useState([]);
 
     console.log("repositories :: onsave", data)
 
+
+
     addRepository(data);
 
      onCancelClick();
 
-  }
+  };
+
+
+  const onUpdate = () => {
+    const data = {
+      id,
+       name,
+       description,
+       lang,
+       url,
+    };
+
+    console.log("repositories :: onupdate", data)
+
+
+    updateRepository(data)
+
+
+     onCancelClick();
+
+  };
+
 
   const onFilterAddClick = () => {
     setRepo(false);
     setRepoAdd(true);
+    setIsEdit(false);
   }
+
+
+
+
 
 
 
@@ -128,7 +158,9 @@ return (
       setDescription={setDescription}
       setLang={setLang}
       setUrl={setUrl}
+      setId={setId}
 
+      setIsEdit={setIsEdit}
       setRepo={setRepo}
       setRepoAdd={setRepoAdd}
 
@@ -140,16 +172,22 @@ return (
 {repoAdd && (
       <RepositoriesAdd
       onSave={onSave}
+      onUpdate={onUpdate}
+
+    
 
       name={name}
       description={description}
       lang={lang}
       url={url}
+      isEdit={isEdit}
 
       setName={setName}
       setDescription={setDescription}
       setLang={setLang}
       setUrl={setUrl}
+
+
 
       />
 )}
