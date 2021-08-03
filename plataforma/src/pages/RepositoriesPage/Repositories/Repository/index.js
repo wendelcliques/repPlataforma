@@ -18,6 +18,8 @@ const Repository = ({
   setRepo,
   setRepoAdd,
 
+  onDelete,
+
 }) => {
   const color = langColors[repository.language && repository.language.toLowerCase()];
 
@@ -64,6 +66,26 @@ const Repository = ({
   >
     Atualizar
   </Cleaner>
+
+  <Cleaner
+
+
+onClick={
+
+
+ () => onDelete(
+   {
+   id: repository.id,
+  name: repository.name,
+  description: repository.description,
+  language: repository.language,
+  html_url: repository.html_url,
+   }
+
+   )}
+>
+Deletar
+</Cleaner>
       </Footer>
 
     </Container>
@@ -72,10 +94,10 @@ const Repository = ({
 Repository.propTypes = {
 
     repository: PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string,
       name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-      html_url: PropTypes.string.isRequired,
+      html_url: PropTypes.string,
       language: PropTypes.string,
 
 
@@ -92,6 +114,8 @@ Repository.propTypes = {
     setIsEdit: PropTypes.func.isRequired,
     setRepo: PropTypes.func.isRequired,
     setRepoAdd: PropTypes.func.isRequired,
+
+    onDelete: PropTypes.func.isRequired,
 
 };
 

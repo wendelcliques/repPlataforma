@@ -1,5 +1,6 @@
 import fireDb from './firebase'
 
+
 export const addRepository = async repo => {
   let data = {};
 
@@ -30,12 +31,14 @@ return data;
 
 
 export const updateRepository = async repo => {
+  alert(" atualização p1")
   let data = {};
 
-  console.log("repoAdd::entry", repo);
+  console.log("repoUp::entry", repo);
 
   try {
     data = {
+      id: repo.id,
       name: repo.name,
       description: repo.description,
       language: repo.lang,
@@ -43,11 +46,17 @@ export const updateRepository = async repo => {
 
     };
 
+    alert(" atualização p2", repo)
+
     await fireDb.firestore()
     .collection('repositories')
     .doc(repo.id)
-    .update(data);
+    .set(data);
+
+    console.log("atualizado com sucesso")
+    alert("atualizado com sucesso")
   } catch (error) {
+    alert("atualizado com erro")
       console.error(
         "repoup:: erro on autualizar",
         data,
@@ -56,4 +65,13 @@ export const updateRepository = async repo => {
   }
 
 return data;
+}
+
+export const deleteRepository = async repo => {
+  await fireDb.firestore()
+    .collection('repositories')
+    .doc(repo.id)
+    .delete();
+
+
 }

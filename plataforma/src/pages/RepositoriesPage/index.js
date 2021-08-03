@@ -10,7 +10,7 @@ import { getLangsFrom } from '../../services/api'
 import fireDb from '../../services/firebase'
 
 
-import { addRepository, updateRepository } from "../../services/Repositories"
+import { addRepository, updateRepository, deleteRepository } from "../../services/Repositories"
 
 const RepositoriesPage = () => {
 
@@ -83,6 +83,17 @@ const [repositories, setRepositories] = useState([]);
 
   };
 
+  const onDelete = () => {
+    const data = {
+      id,
+       name,
+       description,
+       lang,
+       url,
+    };
+    deleteRepository(data)
+  }
+
 
   const onFilterAddClick = () => {
     setRepo(false);
@@ -100,6 +111,7 @@ const [repositories, setRepositories] = useState([]);
   console.log("repo:: ligar tela", repo);
   console.log("repoadd:: ligar tela", repoAdd)
   console.log("name:: repo page", name)
+  console.log("name:: isEdit", isEdit)
 
 
 useEffect(() => {
@@ -164,6 +176,8 @@ return (
       setRepo={setRepo}
       setRepoAdd={setRepoAdd}
 
+      onDelete={onDelete}
+
 
       onFilterAddClick={onFilterAddClick}
       />
@@ -174,7 +188,7 @@ return (
       onSave={onSave}
       onUpdate={onUpdate}
 
-    
+
 
       name={name}
       description={description}

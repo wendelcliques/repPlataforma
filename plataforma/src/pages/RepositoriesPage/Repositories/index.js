@@ -23,6 +23,8 @@ const Repositories = ({
       setRepo,
       setRepoAdd,
 
+      onDelete,
+
     }) => {
 
 const repos = repositories
@@ -44,6 +46,8 @@ const repos = repositories
       setIsEdit={setIsEdit}
       setRepo={setRepo}
       setRepoAdd={setRepoAdd}
+
+      onDelete={onDelete}
   />
 
 
@@ -78,7 +82,7 @@ Repositories.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-      html_url: PropTypes.string.isRequired,
+      html_url: PropTypes.string,
       language: PropTypes.string,
     }).isRequired
     ).isRequired,
@@ -94,6 +98,8 @@ Repositories.propTypes = {
       setIsEdit: PropTypes.func.isRequired,
       setRepo: PropTypes.func.isRequired,
       setRepoAdd: PropTypes.func.isRequired,
+
+      onDelete: PropTypes.func.isRequired,
 
 currentLanguage: PropTypes.string,
 
