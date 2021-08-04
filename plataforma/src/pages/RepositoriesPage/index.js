@@ -11,6 +11,7 @@ import fireDb from '../../services/firebase'
 
 
 import { addRepository, updateRepository, deleteRepository } from "../../services/Repositories"
+import RepositoriesDelete from "./RepositoriesDelete"
 
 const RepositoriesPage = () => {
 
@@ -37,11 +38,12 @@ const [repositories, setRepositories] = useState([]);
 
   const [repo, setRepo] = useState(true);
   const [repoAdd, setRepoAdd] = useState(false);
+  const [repoDelete, setRepoDelete] = useState(false);
 
   const onCancelClick = () => {
    setRepo(true);
    setRepoAdd(false);
-   document.location.reload();
+  // document.location.reload();
   }
 
   const onSave = () => {
@@ -58,6 +60,7 @@ const [repositories, setRepositories] = useState([]);
 
 
     addRepository(data);
+
 
      onCancelClick();
 
@@ -77,6 +80,7 @@ const [repositories, setRepositories] = useState([]);
 
 
     updateRepository(data)
+    // document.location.reload();
 
 
      onCancelClick();
@@ -161,6 +165,16 @@ return (
       />
     </Sidebar>
     <Main>
+
+    {repoDelete && (
+
+<RepositoriesDelete
+onDelete={onDelete}
+
+/>
+)}
+
+
       {repo && (
       <Repositories
       repositories={repositories}
@@ -175,6 +189,7 @@ return (
       setIsEdit={setIsEdit}
       setRepo={setRepo}
       setRepoAdd={setRepoAdd}
+      setRepoDelete={setRepoDelete}
 
       onDelete={onDelete}
 
@@ -205,6 +220,8 @@ return (
 
       />
 )}
+
+
 
     </Main>
   </Container>

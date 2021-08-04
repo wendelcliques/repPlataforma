@@ -22,6 +22,7 @@ const Repositories = ({
       setIsEdit,
       setRepo,
       setRepoAdd,
+      setRepoDelete,
 
       onDelete,
 
@@ -29,10 +30,10 @@ const Repositories = ({
 
 const repos = repositories
 .filter((repository) => currentLanguage === undefined || repository.language === currentLanguage)
-.map((repository, indice) => (
+.map((repository) => (
 
   <Repository
-  indice={indice}
+
   repository={repository}
 
   onFilterAddClick={onFilterAddClick}
@@ -46,6 +47,7 @@ const repos = repositories
       setIsEdit={setIsEdit}
       setRepo={setRepo}
       setRepoAdd={setRepoAdd}
+      setRepoDelete={setRepoDelete}
 
       onDelete={onDelete}
   />
@@ -67,6 +69,20 @@ const repos = repositories
 
  Repositories.defaultProps = {
   currentLanguage: undefined,
+  onFilterAddClick: undefined,
+  setName: undefined,
+
+      setDescription: undefined,
+      setLang: undefined,
+      setUrl: undefined,
+      setId: undefined,
+
+      setIsEdit: undefined,
+      setRepo: undefined,
+      setRepoAdd: undefined,
+      setRepoDelete: undefined,
+
+      onDelete: undefined,
 
 }
 
@@ -79,27 +95,28 @@ Repositories.propTypes = {
 
 
 
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
+      id: PropTypes.string,
+      name: PropTypes.string,
+      description: PropTypes.string,
       html_url: PropTypes.string,
       language: PropTypes.string,
     }).isRequired
     ).isRequired,
 
-    onFilterAddClick: PropTypes.func.isRequired,
-    setName: PropTypes.func.isRequired,
+    onFilterAddClick: PropTypes.func,
+    setName: PropTypes.func,
 
-      setDescription: PropTypes.func.isRequired,
-      setLang: PropTypes.func.isRequired,
-      setUrl: PropTypes.func.isRequired,
-      setId: PropTypes.func.isRequired,
+      setDescription: PropTypes.func,
+      setLang: PropTypes.func,
+      setUrl: PropTypes.func,
+      setId: PropTypes.func,
 
-      setIsEdit: PropTypes.func.isRequired,
-      setRepo: PropTypes.func.isRequired,
-      setRepoAdd: PropTypes.func.isRequired,
+      setIsEdit: PropTypes.func,
+      setRepo: PropTypes.func,
+      setRepoAdd: PropTypes.func,
+      setRepoDelete: PropTypes.func,
 
-      onDelete: PropTypes.func.isRequired,
+      onDelete: PropTypes.func,
 
 currentLanguage: PropTypes.string,
 

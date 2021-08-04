@@ -9,26 +9,35 @@ import { langColors } from '../../../../services/config';
 const Repository = ({
   repository,
   setName,
+
   setDescription,
   setLang,
   setUrl,
+
   setId,
 
   setIsEdit,
   setRepo,
   setRepoAdd,
+  setRepoDelete,
 
-  onDelete,
+
 
 }) => {
   const color = langColors[repository.language && repository.language.toLowerCase()];
 
   const onClick = (valor) => {
+
+
+
     setName(valor.name);
+
     setDescription(valor.description);
     setLang(valor.language);
     setUrl(valor.html_url);
     setId(valor.id);
+
+
 
     setIsEdit(true);
     setRepo(false);
@@ -36,6 +45,18 @@ const Repository = ({
 
 
   }
+
+  const onDeleteId = (valor) => {
+    console.log("delete:: reposotory id", valor.id  )
+
+    setId(valor.id)
+    setRepo(false);
+    setRepoDelete(true);
+  }
+
+
+
+
 
   return (
 
@@ -73,14 +94,16 @@ const Repository = ({
 onClick={
 
 
- () => onDelete(
+ () => onDeleteId(
    {
    id: repository.id,
   name: repository.name,
   description: repository.description,
   language: repository.language,
   html_url: repository.html_url,
-   }
+   },
+
+
 
    )}
 >
@@ -91,12 +114,31 @@ Deletar
     </Container>
   )};
 
+  Repository.defaultProps = {
+
+
+    setName: undefined,
+
+        setDescription: undefined,
+        setLang: undefined,
+        setUrl: undefined,
+        setId: undefined,
+
+        setIsEdit: undefined,
+        setRepo: undefined,
+        setRepoAdd: undefined,
+        setRepoDelete: undefined,
+
+
+
+  }
+
 Repository.propTypes = {
 
     repository: PropTypes.shape({
       id: PropTypes.string,
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
+      name: PropTypes.string,
+      description: PropTypes.string,
       html_url: PropTypes.string,
       language: PropTypes.string,
 
@@ -105,17 +147,19 @@ Repository.propTypes = {
 
     }).isRequired,
 
-    setName: PropTypes.func.isRequired,
-    setDescription: PropTypes.func.isRequired,
-    setLang: PropTypes.func.isRequired,
-    setUrl: PropTypes.func.isRequired,
-    setId: PropTypes.func.isRequired,
+    setName: PropTypes.func,
 
-    setIsEdit: PropTypes.func.isRequired,
-    setRepo: PropTypes.func.isRequired,
-    setRepoAdd: PropTypes.func.isRequired,
+    setDescription: PropTypes.func,
+    setLang: PropTypes.func,
+    setUrl: PropTypes.func,
+    setId: PropTypes.func,
 
-    onDelete: PropTypes.func.isRequired,
+    setIsEdit: PropTypes.func,
+    setRepo: PropTypes.func,
+    setRepoAdd: PropTypes.func,
+    setRepoDelete: PropTypes.func,
+
+
 
 };
 

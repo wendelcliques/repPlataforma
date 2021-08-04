@@ -18,6 +18,8 @@ export const addRepository = async repo => {
     await fireDb.firestore()
     .collection('repositories')
     .add(data);
+    alert("adicionado com sucesso")
+    document.location.reload();
   } catch (error) {
       console.error(
         "repoAdd:: erro on save",
@@ -31,7 +33,7 @@ return data;
 
 
 export const updateRepository = async repo => {
-  alert(" atualização p1")
+
   let data = {};
 
   console.log("repoUp::entry", repo);
@@ -46,7 +48,7 @@ export const updateRepository = async repo => {
 
     };
 
-    alert(" atualização p2", repo)
+
 
     await fireDb.firestore()
     .collection('repositories')
@@ -55,6 +57,7 @@ export const updateRepository = async repo => {
 
     console.log("atualizado com sucesso")
     alert("atualizado com sucesso")
+    document.location.reload();
   } catch (error) {
     alert("atualizado com erro")
       console.error(
@@ -68,10 +71,14 @@ return data;
 }
 
 export const deleteRepository = async repo => {
+  console.log("deletar :: repo", repo)
+  alert("deletado p1")
+
   await fireDb.firestore()
     .collection('repositories')
     .doc(repo.id)
     .delete();
-
+    alert("apagado com sucesso")
+    document.location.reload();
 
 }
