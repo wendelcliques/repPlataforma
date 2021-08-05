@@ -72,7 +72,7 @@ return data;
 
 export const deleteRepository = async repo => {
   console.log("deletar :: repo", repo)
-  alert("deletado p1")
+  
 
   await fireDb.firestore()
     .collection('repositories')
