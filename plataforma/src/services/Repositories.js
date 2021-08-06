@@ -56,8 +56,9 @@ export const updateRepository = async repo => {
     .set(data);
 
     console.log("atualizado com sucesso")
-    alert("atualizado com sucesso")
     document.location.reload();
+    alert("atualizado com sucesso")
+
   } catch (error) {
     alert("atualizado com erro")
       console.error(
@@ -72,7 +73,7 @@ return data;
 
 export const deleteRepository = async repo => {
   console.log("deletar :: repo", repo)
-  
+
 
   await fireDb.firestore()
     .collection('repositories')
