@@ -22,21 +22,24 @@ export const Title = styled.h1`
 
 export const Form = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%auto;
+  width: 100% auto;
   max-width: 583px;
+ // height: 20px;
 
 `;
 
 export const Input = styled.input`
   background: rgba(0, 0, 0, 0.8);
-  width: 100%auto;
+  width: 100% auto;
   height: 64px;
   line-height: 64px;
   border: none;
   font-size: 24px;
   margin-right: 24px;
+  margin-top: 14px;
   padding: 0 24px;
 
   &::placeholder {
@@ -54,6 +57,7 @@ export const Button = styled(Link)`
   height: 64px;
   border: 3px solid ${(props) => props.theme.colors.text};
   transition: background 0.3s;
+  margin-top: 14px;
 
   &:hover {
     background: ${(props) => props.theme.colors.container};

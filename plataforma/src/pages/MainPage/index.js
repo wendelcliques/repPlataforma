@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 
+
+
 import { MdSearch } from 'react-icons/md'
 
 import { Container, Logo, Title, Form, Input, Button  } from './styles';
@@ -8,6 +10,7 @@ import githubLogo from '../../assets/images/github-logo.svg';
 
 const MainPage = () => {
   const [login, setLogin] = useState('');
+  const [senha, setSenha] = useState('');
   return (
 
 
@@ -19,6 +22,10 @@ const MainPage = () => {
           placeholder="usuário"
           value={login}
           onChange={(event) => setLogin(event.target.value) } />
+          <Input
+          placeholder="senha"
+          value={senha}
+          onChange={(event) => setSenha(event.target.value) } />
           <Button
             to="/repositories"
           >
