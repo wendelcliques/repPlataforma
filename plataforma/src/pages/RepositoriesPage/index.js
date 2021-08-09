@@ -43,6 +43,7 @@ const [repositories, setRepositories] = useState([]);
   const onCancelClick = () => {
    setRepo(true);
    setRepoAdd(false);
+   setRepoDelete(false);
   // document.location.reload();
   }
 
@@ -96,6 +97,8 @@ const [repositories, setRepositories] = useState([]);
        url,
     };
     deleteRepository(data)
+
+    onCancelClick();
   }
 
 
@@ -125,7 +128,7 @@ useEffect(() => {
       setRepositories(data.docs.map(doc => ({ ...doc.data(), id: doc.id})));
   }
   loadRepositories();
-}, [])
+}, [repos])
 
 console.log("repositories", repositories)
 

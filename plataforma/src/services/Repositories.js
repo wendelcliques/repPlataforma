@@ -19,7 +19,7 @@ export const addRepository = async repo => {
     .collection('repositories')
     .add(data);
     alert("adicionado com sucesso")
-    document.location.reload();
+    // document.location.reload();
   } catch (error) {
       console.error(
         "repoAdd:: erro on save",
@@ -56,7 +56,7 @@ export const updateRepository = async repo => {
     .set(data);
 
     console.log("atualizado com sucesso")
-    document.location.reload();
+    // document.location.reload();
     alert("atualizado com sucesso")
 
   } catch (error) {
@@ -80,6 +80,6 @@ export const deleteRepository = async repo => {
     .doc(repo.id)
     .delete();
     alert("apagado com sucesso")
-    document.location.reload();
+    // document.location.reload();
 
 }
