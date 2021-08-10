@@ -82,7 +82,7 @@ const [repositories, setRepositories] = useState([]);
 
     updateRepository(data)
     // document.location.reload();
-
+    setIsEdit(false);
 
      onCancelClick();
 
@@ -103,9 +103,14 @@ const [repositories, setRepositories] = useState([]);
 
 
   const onFilterAddClick = () => {
+    setName('');
+    setDescription('');
+    setLang('');
+    setUrl('');
+    setIsEdit(false);
     setRepo(false);
     setRepoAdd(true);
-    setIsEdit(false);
+
   }
 
 
