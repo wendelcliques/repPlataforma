@@ -8,10 +8,10 @@ export default function Routes() {
   return (
     <Router>
       <Switch>
-      <Route path="/repositories">
+      <Route exact path="/repositories">
           <RepositoriesPage />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <MainPage />
         </Route>
       </Switch>
